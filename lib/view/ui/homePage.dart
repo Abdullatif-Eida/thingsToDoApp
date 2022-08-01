@@ -10,6 +10,7 @@ import 'package:thingstodoapp/services/utils.dart';
 import 'package:thingstodoapp/view/shared/drawePage.dart';
 import 'package:thingstodoapp/view/shared/textfield_container.dart';
 import 'package:thingstodoapp/view/ui/addNewTask.dart';
+import 'package:thingstodoapp/view/ui/notifications.dart';
 import 'package:thingstodoapp/view/ui/taskDetails.dart';
 
 class HomePage extends StatefulWidget {
@@ -99,9 +100,17 @@ class _HomePageState extends State<HomePage>
           width: 150,
         ),
         actions: [
-          const Icon(
-            Icons.notifications_active_outlined,
-            size: 30,
+          GestureDetector(
+            child: const Icon(
+              Icons.notifications_active_outlined,
+              size: 30,
+            ),
+            onTap: () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => const Notifications()));
+            },
           ),
           IconButton(
               onPressed: () {
@@ -395,6 +404,24 @@ class _HomePageState extends State<HomePage>
                                                 children: [
                                                   IconButton(
                                                       onPressed: () {
+                                                        if (dailyTask[
+                                                                "isFavorite"] ==
+                                                            false) {
+                                                          setState(() {
+                                                            favoriteTasks
+                                                                .add(dailyTask);
+                                                          });
+                                                        } else {
+                                                          setState(() {
+                                                            favoriteTasks.removeWhere(
+                                                                (element) =>
+                                                                    element[
+                                                                        "guid"] ==
+                                                                    dailyTask[
+                                                                        "guid"]);
+                                                          });
+                                                        }
+
                                                         setState(() {
                                                           dailyTask[
                                                                   "isFavorite"] =
@@ -683,6 +710,23 @@ class _HomePageState extends State<HomePage>
                                                 children: [
                                                   IconButton(
                                                       onPressed: () {
+                                                        if (dailyTask[
+                                                                "isFavorite"] ==
+                                                            false) {
+                                                          setState(() {
+                                                            favoriteTasks
+                                                                .add(dailyTask);
+                                                          });
+                                                        } else {
+                                                          setState(() {
+                                                            favoriteTasks.removeWhere(
+                                                                (element) =>
+                                                                    element[
+                                                                        "guid"] ==
+                                                                    dailyTask[
+                                                                        "guid"]);
+                                                          });
+                                                        }
                                                         setState(() {
                                                           dailyTask[
                                                                   "isFavorite"] =
@@ -951,6 +995,23 @@ class _HomePageState extends State<HomePage>
                                                     children: [
                                                       IconButton(
                                                           onPressed: () {
+                                                            if (dailyTask[
+                                                                    "isFavorite"] ==
+                                                                false) {
+                                                              setState(() {
+                                                                favoriteTasks.add(
+                                                                    dailyTask);
+                                                              });
+                                                            } else {
+                                                              setState(() {
+                                                                favoriteTasks.removeWhere(
+                                                                    (element) =>
+                                                                        element[
+                                                                            "guid"] ==
+                                                                        dailyTask[
+                                                                            "guid"]);
+                                                              });
+                                                            }
                                                             setState(() {
                                                               dailyTask[
                                                                       "isFavorite"] =

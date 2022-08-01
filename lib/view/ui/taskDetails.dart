@@ -5,6 +5,7 @@ import 'package:intl/intl.dart';
 import 'package:thingstodoapp/models/tasks_model.dart';
 import 'package:thingstodoapp/view/ui/addNewTask.dart';
 import 'package:thingstodoapp/view/ui/homePage.dart';
+import 'package:thingstodoapp/view/ui/notifications.dart';
 
 class TaskDetails extends StatefulWidget {
   final String itemName;
@@ -142,9 +143,17 @@ class _TaskDetailsState extends State<TaskDetails> {
         backgroundColor: const Color(0XFF6035D0),
         title: const Text('Item Details'),
         actions: [
-          const Icon(
-            Icons.notifications_active_outlined,
-            size: 30,
+          GestureDetector(
+            child: const Icon(
+              Icons.notifications_active_outlined,
+              size: 30,
+            ),
+            onTap: () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => const Notifications()));
+            },
           ),
           IconButton(
               onPressed: () {

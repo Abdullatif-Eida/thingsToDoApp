@@ -1,5 +1,10 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
+import 'package:thingstodoapp/view/ui/DoneTasks.dart';
+import 'package:thingstodoapp/view/ui/LaterTasks.dart';
+import 'package:thingstodoapp/view/ui/addNewTask.dart';
+
+import '../ui/favoriteTasks.dart';
 
 class DrawerWidget extends StatefulWidget {
   const DrawerWidget({
@@ -16,222 +21,230 @@ class _DrawerWidgetState extends State<DrawerWidget> {
     return Container(
       width: 240,
       child: Drawer(
-        child: Container(
-          decoration: const BoxDecoration(
-            gradient: LinearGradient(
-                colors: [
-                  Colors.black,
-                  Colors.black54,
-                  /*AppColours.appgradientfirstColour,
-                    AppColours.appgradientsecondColour*/
-                ],
-                begin: FractionalOffset(0.0, 0.0),
-                end: FractionalOffset(1.3, 0.0),
-                stops: [0.0, 8.0],
-                tileMode: TileMode.clamp),
-          ),
-          padding: const EdgeInsets.only(top: 20.0),
+        child: SingleChildScrollView(
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Container(
-                margin: const EdgeInsets.only(bottom: 10),
-                height: 70,
-                decoration: const BoxDecoration(
-                  shape: BoxShape.circle,
-                  image: DecorationImage(
-                    image: NetworkImage(
-                        "https://media-exp1.licdn.com/dms/image/C5603AQHgy5YaTKYuTQ/profile-displayphoto-shrink_200_200/0/1565907304640?e=2147483647&v=beta&t=w-OmUIeebFcA1fkUgFUy3iBvq-lIACGx6Omh2a4aBP0"),
-                  ),
-                ),
-              ),
-              const Text(
-                "Admin",
-                style: TextStyle(color: Colors.white, fontSize: 20),
-              ),
-              const Text(
-                "Points:23432432423",
-                style: TextStyle(color: Colors.white, fontSize: 20),
-              ),
-              const SizedBox(
-                height: 10,
-              ),
-              const DividerWidget(),
-              drawerItem(
-                  wantedIcon: Icons.person_outline_outlined,
-                  itemName: 'My Profile',
-                  onTap: () {}),
-              const DividerWidget(),
-              GestureDetector(
-                child: Padding(
-                  padding: const EdgeInsets.only(top: 2.0, bottom: 2),
-                  child: Row(
-                    children: [
-                      const Padding(
-                        padding: EdgeInsets.only(left: 14.0, right: 14.0),
-                        child: Icon(
-                          Icons.brightness_7_rounded,
-                          size: 20,
-                          color: Colors.white,
+                color: Theme.of(context).primaryColor,
+                width: double.infinity,
+                height: 200,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Container(
+                      margin: const EdgeInsets.only(bottom: 10),
+                      height: 70,
+                      decoration: const BoxDecoration(
+                        shape: BoxShape.circle,
+                        image: DecorationImage(
+                          image: NetworkImage(
+                              "https://media-exp1.licdn.com/dms/image/C4D03AQG2XQsjB_juKA/profile-displayphoto-shrink_200_200/0/1644853536737?e=1665014400&v=beta&t=z5-P75FwmP2G5ygf809I3fDMyO184fWCj8Hoc-Y5Ds4"),
                         ),
-                      ),
-                      const Text(
-                        "Points",
-                        style: TextStyle(
-                            color: Color.fromARGB(255, 255, 255, 255),
-                            fontSize: 16,
-                            fontWeight: FontWeight.bold),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.only(left: 8.0, right: 12.0),
-                        child: Container(
-                          decoration: BoxDecoration(
-                              color: Colors.yellow,
-                              borderRadius: BorderRadius.circular(4)),
-                          child: const Padding(
-                            padding: EdgeInsets.fromLTRB(8, 0, 8, 0),
-                            child: Text("0"),
-                          ),
-                        ),
-                      )
-                    ],
-                  ),
-                ),
-                onTap: () {},
-              ),
-              const DividerWidget(),
-              drawerItem(
-                wantedIcon: Icons.shopping_cart_rounded,
-                itemName: 'Checkout',
-                onTap: () {},
-              ),
-              const DividerWidget(),
-              drawerItem(
-                wantedIcon: Icons.settings,
-                itemName: 'Request Part',
-                onTap: () {
-                  showDialog(
-                    context: context,
-                    barrierDismissible: false,
-                    builder: (_) => WillPopScope(
-                      onWillPop: () async {
-                        return false;
-                      },
-                      child: AlertDialog(
-                        title: const Text(
-                          'Alert',
-                          style: TextStyle(fontSize: 15, height: 1.6),
-                        ),
-                        content: const Text("Soon"),
-                        actions: [
-                          TextButton(
-                            onPressed: () {
-                              Navigator.of(context).pop();
-                            },
-                            child: const Text("Ok",
-                                style: TextStyle(color: Colors.black)),
-                          ),
-                        ],
                       ),
                     ),
-                  );
-                },
-              ),
-              const DividerWidget(),
-              drawerItem(
-                  wantedIcon: Icons.copyright,
-                  itemName: 'Our Brands',
-                  onTap: () {}),
-              const DividerWidget(),
-              drawerItem(
-                wantedIcon: Icons.brightness_7_rounded,
-                itemName: 'Certificates',
-                onTap: () {},
-              ),
-              const DividerWidget(),
-              drawerItem(
-                wantedIcon: Icons.mail,
-                itemName: 'Contact Us',
-                onTap: () {},
-              ),
-              const DividerWidget(),
-              drawerItem(
-                wantedIcon: Icons.notifications,
-                itemName: 'Notifications',
-                onTap: () {},
-              ),
-              const DividerWidget(),
-              drawerItem(
-                wantedIcon: Icons.logout,
-                itemName: 'Sign Out',
-              ),
-              const DividerWidget(),
-              const SizedBox(
-                height: 30,
-              ),
-              Padding(
-                padding: const EdgeInsets.only(left: 8.0),
-                child: Row(
-                  children: const [
-                    Text(
-                      "Admin Panel",
-                      style: TextStyle(color: Colors.red, fontSize: 18),
+                    const Text(
+                      "Abdullatif Eida",
+                      style: const TextStyle(color: Colors.white, fontSize: 20),
                     ),
                   ],
                 ),
               ),
-              const SizedBox(
-                height: 10,
-              ),
-              const DividerWidget(),
-              drawerItem(
-                wantedIcon: Icons.send,
-                itemName: 'Send Notification',
-                onTap: () {},
-              ),
-              const DividerWidget(),
-              drawerItem(
-                wantedIcon: Icons.account_balance_wallet_rounded,
-                itemName: 'Manage Bills',
-                onTap: () {},
-              ),
-              const DividerWidget(),
-              drawerItem(
-                wantedIcon: Icons.settings,
-                itemName: 'Manage Part Request',
-                onTap: () {
-                  showDialog(
-                    context: context,
-                    barrierDismissible: false,
-                    builder: (_) => WillPopScope(
-                      onWillPop: () async {
-                        return false;
-                      },
-                      child: AlertDialog(
-                        title: const Text(
-                          'Alert',
-                          style: TextStyle(fontSize: 15, height: 1.6),
-                        ),
-                        content: const Text("Soon"),
-                        actions: [
-                          TextButton(
-                            onPressed: () {
-                              Navigator.of(context).pop();
-                            },
-                            child: const Text("Ok",
-                                style: TextStyle(color: Colors.black)),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    GestureDetector(
+                      child: Row(
+                        children: const [
+                          Icon(
+                            Icons.add,
+                            size: 25,
+                            color: Color.fromARGB(255, 85, 85, 85),
+                          ),
+                          SizedBox(width: 15),
+                          Text(
+                            "New Task",
+                            style: TextStyle(
+                              color: Colors.black,
+                              fontSize: 16,
+                            ),
                           ),
                         ],
                       ),
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const AddNewTask(
+                                    dailyTaskMap: {}, isEdit: false)));
+                      },
                     ),
-                  );
-                },
-              ),
-              const DividerWidget(),
-              drawerItem(
-                wantedIcon: Icons.groups,
-                itemName: 'Manage Users',
-                onTap: () {},
+                    const SizedBox(height: 30),
+                    GestureDetector(
+                      child: Row(
+                        children: const [
+                          Icon(
+                            Icons.star_border,
+                            size: 25,
+                            color: Color.fromARGB(255, 85, 85, 85),
+                          ),
+                          SizedBox(width: 15),
+                          Text(
+                            "Important",
+                            style: TextStyle(
+                              color: Colors.black,
+                              fontSize: 16,
+                            ),
+                          ),
+                        ],
+                      ),
+                      onTap: () async {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const FavoriteTasks()));
+                      },
+                    ),
+                    const SizedBox(height: 30),
+                    GestureDetector(
+                      child: Row(
+                        children: const [
+                          Icon(
+                            Icons.check_box_outlined,
+                            size: 25,
+                            color: Color.fromARGB(255, 85, 85, 85),
+                          ),
+                          SizedBox(width: 15),
+                          Text(
+                            "Done",
+                            style: TextStyle(
+                              color: Colors.black,
+                              fontSize: 16,
+                            ),
+                          ),
+                        ],
+                      ),
+                      onTap: () async {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const DoneTasks()));
+                      },
+                    ),
+                    const SizedBox(height: 30),
+                    GestureDetector(
+                      child: Row(
+                        children: const [
+                          Icon(
+                            Icons.history,
+                            size: 25,
+                            color: Color.fromARGB(255, 85, 85, 85),
+                          ),
+                          SizedBox(width: 15),
+                          Text(
+                            "Later",
+                            style: TextStyle(
+                              color: Colors.black,
+                              fontSize: 16,
+                            ),
+                          ),
+                        ],
+                      ),
+                      onTap: () async {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const LaterTasks()));
+                      },
+                    ),
+                    const SizedBox(height: 30),
+                    GestureDetector(
+                      child: Row(
+                        children: const [
+                          Icon(
+                            Icons.chat,
+                            size: 25,
+                            color: Color.fromARGB(255, 85, 85, 85),
+                          ),
+                          SizedBox(width: 15),
+                          Text(
+                            "Chat",
+                            style: TextStyle(
+                              color: Colors.black,
+                              fontSize: 16,
+                            ),
+                          ),
+                        ],
+                      ),
+                      onTap: () async {},
+                    ),
+                    const SizedBox(height: 30),
+                    GestureDetector(
+                      child: Row(
+                        children: const [
+                          Icon(
+                            Icons.groups_rounded,
+                            size: 25,
+                            color: Color.fromARGB(255, 85, 85, 85),
+                          ),
+                          SizedBox(width: 15),
+                          Text(
+                            "Groups",
+                            style: TextStyle(
+                              color: Colors.black,
+                              fontSize: 16,
+                            ),
+                          ),
+                        ],
+                      ),
+                      onTap: () async {},
+                    ),
+                    const SizedBox(height: 30),
+                    GestureDetector(
+                      child: Row(
+                        children: const [
+                          Icon(
+                            Icons.settings,
+                            size: 25,
+                            color: Color.fromARGB(255, 85, 85, 85),
+                          ),
+                          SizedBox(width: 15),
+                          Text(
+                            "Settings",
+                            style: TextStyle(
+                              color: Colors.black,
+                              fontSize: 16,
+                            ),
+                          ),
+                        ],
+                      ),
+                      onTap: () async {},
+                    ),
+                    const SizedBox(height: 30),
+                    GestureDetector(
+                      child: Row(
+                        children: const [
+                          Icon(
+                            Icons.logout,
+                            size: 25,
+                            color: Color.fromARGB(255, 85, 85, 85),
+                          ),
+                          SizedBox(width: 15),
+                          Text(
+                            "Log out",
+                            style: TextStyle(
+                              color: Colors.black,
+                              fontSize: 16,
+                            ),
+                          ),
+                        ],
+                      ),
+                      onTap: () async {},
+                    ),
+                  ],
+                ),
               ),
             ],
           ),

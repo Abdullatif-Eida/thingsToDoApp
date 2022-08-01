@@ -6,6 +6,7 @@ import 'package:select_dialog/select_dialog.dart';
 import 'package:thingstodoapp/models/tasks_model.dart';
 import 'package:thingstodoapp/view/shared/textfield_container.dart';
 import 'package:thingstodoapp/view/ui/homePage.dart';
+import 'package:thingstodoapp/view/ui/notifications.dart';
 import 'package:uuid/uuid.dart';
 
 class AddNewTask extends StatefulWidget {
@@ -59,12 +60,18 @@ class _AddNewTaskState extends State<AddNewTask> {
         backgroundColor: const Color(0XFF6035D0),
         title: const Text('New Item'),
         actions: [
-          IconButton(
-              onPressed: () {},
-              icon: const Icon(
-                Icons.notifications_active_outlined,
-                size: 30,
-              )),
+          GestureDetector(
+            child: const Icon(
+              Icons.notifications_active_outlined,
+              size: 30,
+            ),
+            onTap: () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => const Notifications()));
+            },
+          ),
         ],
       ),
       body: SafeArea(
