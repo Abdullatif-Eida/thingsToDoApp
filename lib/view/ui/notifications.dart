@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
+import 'package:thingstodoapp/models/notifications_model.dart';
 import 'package:thingstodoapp/models/tasks_model.dart';
 import 'package:thingstodoapp/view/ui/taskDetails.dart';
 
