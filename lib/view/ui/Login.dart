@@ -61,7 +61,9 @@ class _LoginState extends State<Login> {
                       formkey: _formkey,
                       presuffixIcon: const Icon(Icons.lock),
                       errorMsg: "",
-                      keyboardType: TextInputType.number,
+                      obscureText: true,
+                      maxLines: 1,
+                      keyboardType: TextInputType.visiblePassword,
                       validator: (String? value) {
                         if (value!.isEmpty) {
                           return '';

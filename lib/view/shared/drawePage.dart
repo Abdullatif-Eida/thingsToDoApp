@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:thingstodoapp/view/ui/DoneTasks.dart';
 import 'package:thingstodoapp/view/ui/LaterTasks.dart';
+import 'package:thingstodoapp/view/ui/Login%20copy.dart';
 import 'package:thingstodoapp/view/ui/addNewTask.dart';
 import 'package:thingstodoapp/view/ui/chat.dart';
 import 'package:thingstodoapp/view/ui/groups.dart';
@@ -265,7 +266,12 @@ class _DrawerWidgetState extends State<DrawerWidget> {
                           ),
                         ],
                       ),
-                      onTap: () async {},
+                      onTap: () async {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const Login()));
+                      },
                     ),
                   ],
                 ),

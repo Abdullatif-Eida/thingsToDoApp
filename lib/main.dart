@@ -28,7 +28,7 @@ class _MyAppState extends State<MyApp> {
           primary: const Color(0XFF6035D0),
         ),
       ),
-      home: HomePage(),
+      home: Login(),
     );
   }
 }
