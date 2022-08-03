@@ -3,7 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:thingstodoapp/view/ui/DoneTasks.dart';
 import 'package:thingstodoapp/view/ui/LaterTasks.dart';
 import 'package:thingstodoapp/view/ui/addNewTask.dart';
+import 'package:thingstodoapp/view/ui/chat.dart';
 import 'package:thingstodoapp/view/ui/groups.dart';
+import 'package:thingstodoapp/view/ui/userProfile.dart';
 
 import '../ui/favoriteTasks.dart';
 
@@ -32,16 +34,27 @@ class _DrawerWidgetState extends State<DrawerWidget> {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Container(
-                      margin: const EdgeInsets.only(bottom: 10),
-                      height: 70,
-                      decoration: const BoxDecoration(
-                        shape: BoxShape.circle,
-                        image: DecorationImage(
-                          image: NetworkImage(
-                              "https://media-exp1.licdn.com/dms/image/C4D03AQG2XQsjB_juKA/profile-displayphoto-shrink_200_200/0/1644853536737?e=1665014400&v=beta&t=z5-P75FwmP2G5ygf809I3fDMyO184fWCj8Hoc-Y5Ds4"),
+                    GestureDetector(
+                      child: Container(
+                        margin: const EdgeInsets.only(bottom: 10),
+                        height: 70,
+                        decoration: const BoxDecoration(
+                          shape: BoxShape.circle,
+                          image: DecorationImage(
+                            image: NetworkImage(
+                                "https://media-exp1.licdn.com/dms/image/C4D03AQG2XQsjB_juKA/profile-displayphoto-shrink_200_200/0/1644853536737?e=1665014400&v=beta&t=z5-P75FwmP2G5ygf809I3fDMyO184fWCj8Hoc-Y5Ds4"),
+                          ),
                         ),
                       ),
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const UserProfile(
+                                      isView: false,
+                                      userProfile: {},
+                                    )));
+                      },
                     ),
                     const Text(
                       "Abdullatif Eida",
@@ -179,7 +192,12 @@ class _DrawerWidgetState extends State<DrawerWidget> {
                           ),
                         ],
                       ),
-                      onTap: () async {},
+                      onTap: () async {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const Chat()));
+                      },
                     ),
                     const SizedBox(height: 30),
                     GestureDetector(

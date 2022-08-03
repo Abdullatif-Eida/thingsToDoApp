@@ -12,6 +12,7 @@ import 'package:thingstodoapp/view/shared/textfield_container.dart';
 import 'package:thingstodoapp/view/ui/addNewTask.dart';
 import 'package:thingstodoapp/view/ui/notifications.dart';
 import 'package:thingstodoapp/view/ui/taskDetails.dart';
+import 'package:thingstodoapp/view/ui/userProfile.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -366,16 +367,32 @@ class _HomePageState extends State<HomePage>
                                                 children: [
                                                   Text(dailyTask["time"]),
                                                   const SizedBox(height: 5),
-                                                  CircleAvatar(
-                                                    radius: 12,
-                                                    backgroundColor:
-                                                        const Color(0XFF6035D0),
+                                                  GestureDetector(
                                                     child: CircleAvatar(
-                                                      radius: 10,
-                                                      backgroundImage:
-                                                          NetworkImage(dailyTask[
-                                                              "publisherImage"]),
+                                                      radius: 12,
+                                                      backgroundColor:
+                                                          const Color(
+                                                              0XFF6035D0),
+                                                      child: CircleAvatar(
+                                                        radius: 10,
+                                                        backgroundImage:
+                                                            NetworkImage(dailyTask[
+                                                                "publisherImage"]),
+                                                      ),
                                                     ),
+                                                    onTap: () {
+                                                      Navigator.push(
+                                                          context,
+                                                          MaterialPageRoute(
+                                                              builder:
+                                                                  (context) =>
+                                                                      UserProfile(
+                                                                        isView:
+                                                                            true,
+                                                                        userProfile:
+                                                                            dailyTask,
+                                                                      )));
+                                                    },
                                                   )
                                                 ],
                                               ),
@@ -672,16 +689,32 @@ class _HomePageState extends State<HomePage>
                                                 children: [
                                                   Text(dailyTask["time"]),
                                                   const SizedBox(height: 5),
-                                                  CircleAvatar(
-                                                    radius: 12,
-                                                    backgroundColor:
-                                                        const Color(0XFF6035D0),
+                                                  GestureDetector(
                                                     child: CircleAvatar(
-                                                      radius: 10,
-                                                      backgroundImage:
-                                                          NetworkImage(dailyTask[
-                                                              "publisherImage"]),
+                                                      radius: 12,
+                                                      backgroundColor:
+                                                          const Color(
+                                                              0XFF6035D0),
+                                                      child: CircleAvatar(
+                                                        radius: 10,
+                                                        backgroundImage:
+                                                            NetworkImage(dailyTask[
+                                                                "publisherImage"]),
+                                                      ),
                                                     ),
+                                                    onTap: () {
+                                                      Navigator.push(
+                                                          context,
+                                                          MaterialPageRoute(
+                                                              builder:
+                                                                  (context) =>
+                                                                      UserProfile(
+                                                                        isView:
+                                                                            true,
+                                                                        userProfile:
+                                                                            dailyTask,
+                                                                      )));
+                                                    },
                                                   )
                                                 ],
                                               ),
@@ -949,18 +982,33 @@ class _HomePageState extends State<HomePage>
                                                     children: [
                                                       Text(dailyTask["time"]),
                                                       const SizedBox(height: 5),
-                                                      CircleAvatar(
-                                                        radius: 12,
-                                                        backgroundColor:
-                                                            const Color(
-                                                                0XFF6035D0),
+                                                      GestureDetector(
                                                         child: CircleAvatar(
-                                                          radius: 10,
-                                                          backgroundImage:
-                                                              NetworkImage(
-                                                                  dailyTask[
-                                                                      "publisherImage"]),
+                                                          radius: 12,
+                                                          backgroundColor:
+                                                              const Color(
+                                                                  0XFF6035D0),
+                                                          child: CircleAvatar(
+                                                            radius: 10,
+                                                            backgroundImage:
+                                                                NetworkImage(
+                                                                    dailyTask[
+                                                                        "publisherImage"]),
+                                                          ),
                                                         ),
+                                                        onTap: () {
+                                                          Navigator.push(
+                                                              context,
+                                                              MaterialPageRoute(
+                                                                  builder:
+                                                                      (context) =>
+                                                                          UserProfile(
+                                                                            isView:
+                                                                                true,
+                                                                            userProfile:
+                                                                                dailyTask,
+                                                                          )));
+                                                        },
                                                       )
                                                     ],
                                                   ),

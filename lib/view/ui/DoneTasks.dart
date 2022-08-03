@@ -3,6 +3,7 @@ import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:thingstodoapp/models/tasks_model.dart';
 import 'package:thingstodoapp/view/ui/notifications.dart';
 import 'package:thingstodoapp/view/ui/taskDetails.dart';
+import 'package:thingstodoapp/view/ui/userProfile.dart';
 
 import 'addNewTask.dart';
 
@@ -96,16 +97,44 @@ class _DoneTasksState extends State<DoneTasks> {
                                             children: [
                                               Text(dailyTask["time"]),
                                               const SizedBox(height: 5),
-                                              CircleAvatar(
-                                                radius: 12,
-                                                backgroundColor:
-                                                    const Color(0XFF6035D0),
-                                                child: CircleAvatar(
-                                                  radius: 10,
-                                                  backgroundImage: NetworkImage(
-                                                      dailyTask[
-                                                          "publisherImage"]),
+                                              GestureDetector(
+                                                child: GestureDetector(
+                                                  child: CircleAvatar(
+                                                    radius: 12,
+                                                    backgroundColor:
+                                                        const Color(0XFF6035D0),
+                                                    child: CircleAvatar(
+                                                      radius: 10,
+                                                      backgroundImage:
+                                                          NetworkImage(dailyTask[
+                                                              "publisherImage"]),
+                                                    ),
+                                                  ),
+                                                  onTap: () {
+                                                    Navigator.push(
+                                                        context,
+                                                        MaterialPageRoute(
+                                                            builder:
+                                                                (context) =>
+                                                                    UserProfile(
+                                                                      isView:
+                                                                          true,
+                                                                      userProfile:
+                                                                          dailyTask,
+                                                                    )));
+                                                  },
                                                 ),
+                                                onTap: () {
+                                                  Navigator.push(
+                                                      context,
+                                                      MaterialPageRoute(
+                                                          builder: (context) =>
+                                                              UserProfile(
+                                                                isView: true,
+                                                                userProfile:
+                                                                    dailyTask,
+                                                              )));
+                                                },
                                               )
                                             ],
                                           ),
