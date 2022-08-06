@@ -88,6 +88,7 @@ class _ChatingState extends State<Chating> {
                                   padding: EdgeInsets.all(16),
                                   child: Text(
                                     messages[index].messageContent,
+                                    maxLines: 15,
                                     style: TextStyle(
                                         fontSize: 15,
                                         color: messages[index].messageType ==

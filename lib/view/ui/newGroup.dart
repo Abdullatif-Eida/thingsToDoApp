@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:thingstodoapp/view/shared/textfield_container.dart';
+import 'package:thingstodoapp/view/ui/groups.dart';
 import 'package:thingstodoapp/view/ui/notifications.dart';
 
 class NewGroup extends StatefulWidget {
@@ -82,20 +83,26 @@ class _NewGroupState extends State<NewGroup> {
                       return null;
                     }),
                 TextFieldContainer(
-                  readOnly: true,
-                  hintText: "Add members",
-                  formkey: _formkey,
-                  hintTextColor: Colors.grey[400],
-                  suffixIcon: Padding(
-                    padding: const EdgeInsets.all(4.0),
-                    child: IconButton(
-                        onPressed: () async {}, icon: const Icon(Icons.add)),
-                  ),
-                  fillcolor: Colors.white,
-                  border: true,
-                  errorMsg: "",
-                  keyboardType: TextInputType.name,
-                ),
+                    readOnly: true,
+                    hintText: "Add members",
+                    formkey: _formkey,
+                    hintTextColor: Colors.grey[400],
+                    suffixIcon: Padding(
+                      padding: const EdgeInsets.all(4.0),
+                      child: IconButton(
+                          onPressed: () async {}, icon: const Icon(Icons.add)),
+                    ),
+                    fillcolor: Colors.white,
+                    border: true,
+                    errorMsg: "",
+                    keyboardType: TextInputType.name,
+                    validator: (String? value) {
+                      if (value!.isEmpty) {
+                        return '';
+                      }
+
+                      return null;
+                    }),
                 TextFieldContainer(
                   readOnly: true,
                   hintText: "Add image",
@@ -117,7 +124,23 @@ class _NewGroupState extends State<NewGroup> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 TextButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    if (_formkey.currentState!.validate()) {
+                      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                        content: Text("New item has been created",
+                            style: TextStyle(fontFamily: "Almarai")),
+                      ));
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const Groups()));
+                    } else {
+                      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                        content: Text("All fields are required",
+                            style: TextStyle(fontFamily: "Almarai")),
+                      ));
+                    }
+                  },
                   child: Container(
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(4),

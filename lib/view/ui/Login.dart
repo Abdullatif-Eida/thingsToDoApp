@@ -63,7 +63,7 @@ class _LoginState extends State<Login> {
                       errorMsg: "",
                       obscureText: true,
                       maxLines: 1,
-                      keyboardType: TextInputType.visiblePassword,
+                      keyboardType: TextInputType.number,
                       validator: (String? value) {
                         if (value!.isEmpty) {
                           return '';

@@ -538,9 +538,11 @@ class _AddNewTaskState extends State<AddNewTask> {
                             },
                           );
                         });
-                        ScaffoldMessenger.of(context)
-                            .showSnackBar(const SnackBar(
-                          content: Text("New item has been created",
+                        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                          content: Text(
+                              widget.isEdit == true
+                                  ? "The Modifications has been updated"
+                                  : "New item has been created",
                               style: TextStyle(fontFamily: "Almarai")),
                         ));
                         Navigator.push(
@@ -560,11 +562,11 @@ class _AddNewTaskState extends State<AddNewTask> {
                         borderRadius: BorderRadius.circular(4),
                         color: const Color(0XFF6035D0),
                       ),
-                      child: const Padding(
+                      child: Padding(
                         padding: EdgeInsets.all(15.0),
                         child: Center(
                             child: Text(
-                          "ADD",
+                          widget.isEdit == true ? "EDIT" : "ADD",
                           style: TextStyle(color: Colors.white),
                         )),
                       ),
