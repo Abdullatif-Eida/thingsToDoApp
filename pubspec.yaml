@@ -41,6 +41,7 @@ dependencies:
   select_dialog: ^2.0.0
   image_picker: ^0.8.5+3
   uuid: ^3.0.6
+  fast_flutter_driver: ^3.0.0+1
 dev_dependencies:
   flutter_test:
     sdk: flutter
