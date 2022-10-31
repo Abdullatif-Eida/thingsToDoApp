@@ -12,13 +12,21 @@ themselves automatically.
 # [Video Preview of Final UI](https://www.youtube.com/watch?v=p9AjcBkl9pw)
 
 Packages:
-url_launcher:
-intl: 
+
+url_launcher:[link](https://pub.dev/packages/url_launcher)
+
+intl: [link](https://pub.dev/packages/intl)
+
 flutter_slidable:[link](https://pub.dev/packages/flutter_slidable)
+
 table_calendar:[link](https://pub.dev/packages/table_calendar)
+
 select_dialog:[link](https://pub.dev/packages/select_dialog)
+
 image_picker:[link](https://pub.dev/packages/image_picker)
+
 uuid:[link](https://pub.dev/packages/uuid)
+
 fast_flutter_driver:[link](https://pub.dev/packages/fast_flutter_driver)
 
 
