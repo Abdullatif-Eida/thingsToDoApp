@@ -77,3 +77,5 @@ Groups page
 
 <img width="379" alt="image" src="https://user-images.githubusercontent.com/35701617/198956312-28a6561c-c78f-4e9c-8dc7-fc3c201ff3a8.png">
 
+# Clone it 
+you can clone this project by pesting the followning command in your terminal - https://github.com/Abdullatif-Eida/thingsToDoApp.git
