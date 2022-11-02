@@ -27,6 +27,8 @@ image_picker:[link](https://pub.dev/packages/image_picker)
 
 uuid:[link](https://pub.dev/packages/uuid)
 
+provider:[link](https://pub.dev/packages/provider)
+
 fast_flutter_driver:[link](https://pub.dev/packages/fast_flutter_driver)
 
 
